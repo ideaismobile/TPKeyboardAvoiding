@@ -71,8 +71,7 @@ static const int kStateKey;
     self.contentInset = [self TPKeyboardAvoiding_contentInsetForKeyboard];
     
     if ( firstResponder ) {
-        CGFloat viewableHeight = self.bounds.size.height - self.contentInset.top - self.contentInset.bottom;
-        viewableHeight = MIN(352, viewableHeight);
+        CGFloat viewableHeight = self.bounds.size.height - self.contentInset.top - 100.0f;
         [self setContentOffset:CGPointMake(self.contentOffset.x,
                                            [self TPKeyboardAvoiding_idealOffsetForView:firstResponder
                                                                  withViewingAreaHeight:viewableHeight])
@@ -105,7 +104,7 @@ static const int kStateKey;
     
     self.contentInset = state.priorInset;
     self.scrollIndicatorInsets = state.priorScrollIndicatorInsets;
-    [self setContentOffset:CGPointMake(0,0)];
+    [self setContentOffset:CGPointMake(0,(self.bounds.size.height / 2))];
     [UIView commitAnimations];
 }
 
